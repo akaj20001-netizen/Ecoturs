@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecoturs Ubalá - Vivencia y Naturaleza en el Guavio</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Logo.png">
+    
+    <!-- Fuentes Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --verde-principal: #2E6B56;
+            --verde-lima: #74C655;
+            --amarillo-sol: #FFB800;
+            --naranja-aventura: #FF6B35;
+            --azul-lago: #00A896;
+            --fondo-claro: #F2F8F5;
+            --texto-oscuro: #2D3748;
+            --blanco: #FFFFFF;
+            --fuente-titulo: 'Fredoka', cursive;
+            --fuente-cuerpo: 'Poppins', sans-serif;
+        }
+
+        body {
+            font-family: var(--fuente-cuerpo);
+            background-color: var(--fondo-claro);
+            color: var(--texto-oscuro);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: var(--verde-principal);
+            color: var(--blanco);
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 12px; }
+        .logo-img { height: 55px; width: auto; object-fit: contain; }
+        .logo-text h1 { font-family: var(--fuente-titulo); font-size: 1.8rem; color: var(--amarillo-sol); line-height: 1; }
+        .logo-text p { font-size: 0.85rem; color: var(--blanco); }
+
+        nav ul { display: flex; list-style: none; gap: 20px; align-items: center; }
+        nav ul li a { text-decoration: none; color: var(--blanco); font-weight: 600; font-size: 1rem; transition: all 0.3s; }
+        nav ul li a:hover { color: var(--amarillo-sol); }
+
+        .btn-nav {
+            background-color: var(--naranja-aventura);
+            padding: 8px 18px;
+            border-radius: 20px;
+            color: var(--blanco) !important;
+            box-shadow: 0 3px 8px rgba(255,107,53,0.4);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            min-height: 55vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--blanco);
+        }
+
+        .hero-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 35px 25px;
+            border-radius: 25px;
+            max-width: 780px;
+            color: var(--texto-oscuro);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 4px solid var(--amarillo-sol);
+        }
+
+        .hero h2 { font-family: var(--fuente-titulo); font-size: 2.5rem; color: var(--verde-principal); margin-bottom: 12px; }
+
+        .btn-action {
+            display: inline-block;
+            background-color: var(--naranja-aventura);
+            color: var(--blanco);
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-family: var(--fuente-titulo);
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(255,107,53,0.4);
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .btn-action:hover { transform: translateY(-2px); background-color: #e55a24; }
+
+        section { padding: 45px 0; }
+
+        h3.section-title {
+            font-family: var(--fuente-titulo);
+            text-align: center;
+            font-size: 2.3rem;
+            color: var(--verde-principal);
+            margin-bottom: 25px;
+        }
+
+        h3.section-title::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 5px;
+            background-color: var(--amarillo-sol);
+            margin: 8px auto 0;
+            border-radius: 10px;
+        }
+
+        .section-login { background-color: var(--verde-principal); color: var(--blanco); }
+        .section-login h3.section-title { color: var(--blanco); }
+
+        .auth-container { display: flex; gap: 25px; flex-wrap: wrap; }
+        .auth-box {
+            flex: 1;
+            min-width: 280px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 25px 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .auth-box h4 { font-family: var(--fuente-titulo); font-size: 1.6rem; margin-bottom: 15px; text-align: center; color: var(--amarillo-sol); }
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; margin-bottom: 4px; font-weight: 600; font-size: 0.9rem; }
+        .form-group input, .form-group select { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #cbd5e0; font-family: var(--fuente-cuerpo); outline: none; }
+
+        .user-panel {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            display: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .section-user-routes {
+            display: none;
+            background-color: #EBF8F3;
+            border-top: 5px solid var(--amarillo-sol);
+        }
+
+        .ruta-privada-card {
+            background: var(--blanco);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            margin-bottom: 35px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .ruta-privada-img { flex: 1; min-width: 300px; max-height: 480px; object-fit: cover; }
+        .ruta-privada-info { flex: 2; min-width: 320px; padding: 25px; }
+        .ruta-privada-info h4 { font-family: var(--fuente-titulo); font-size: 1.7rem; color: var(--verde-principal); margin-bottom: 6px; }
+
+        .badge-duracion {
+            display: inline-block;
+            background-color: var(--amarillo-sol);
+            color: var(--texto-oscuro);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+        .gastronomia-box {
+            background-color: #FEFCBF;
+            border-left: 4px solid var(--amarillo-sol);
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin: 12px 0;
+            font-size: 0.88rem;
+        }
+
+        .precios-box {
+            display: flex;
+            gap: 12px;
+            background-color: var(--fondo-claro);
+            padding: 12px;
+            border-radius: 12px;
+            margin: 12px 0;
+        }
+
+        .precio-item { flex: 1; text-align: center; }
+        .precio-item .label { font-size: 0.78rem; color: #718096; font-weight: 600; }
+        .precio-item .val { font-family: var(--fuente-titulo); font-size: 1.3rem; color: var(--naranja-aventura); }
+
+        .booking-calculator {
+            background-color: #f0fdf4;
+            padding: 18px;
+            border-radius: 15px;
+            border: 1px solid var(--verde-lima);
+            margin-top: 12px;
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .insurance-terms {
+            font-size: 0.8rem;
+            color: #4A5568;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* MODALES */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        .modal-card {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            max-width: 550px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .modal-card h4 { font-family: var(--fuente-titulo); font-size: 1.6rem; color: var(--verde-principal); text-align: center; margin-bottom: 10px; }
+        
+        .payment-options { display: flex; gap: 8px; margin: 12px 0; }
+
+        .pay-tab {
+            flex: 1; padding: 8px 4px; border: 2px solid #E2E8F0; border-radius: 10px;
+            background: #F7FAFC; cursor: pointer; text-align: center; font-size: 0.8rem; font-weight: 600; transition: all 0.2s;
+        }
+
+        .pay-tab.active { border-color: var(--verde-principal); background: #EBF8F3; color: var(--verde-principal); }
+
+        .pay-form-panel { display: none; text-align: left; background: var(--fondo-claro); padding: 12px; border-radius: 12px; margin-top: 8px; }
+        .pay-form-panel.active { display: block; }
+
+        .qr-box { text-align: center; }
+        .qr-box img { width: 150px; height: 150px; margin: 8px 0; border: 2px solid var(--verde-principal); border-radius: 10px; }
+
+        .ticket-box {
+            border: 2px dashed var(--verde-principal);
+            background: #FAFCF9;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        .ticket-header { border-bottom: 2px solid #E2E8F0; padding-bottom: 10px; margin-bottom: 12px; text-align: center; }
+        .ticket-header h5 { font-family: var(--fuente-titulo); font-size: 1.4rem; color: var(--verde-principal); }
+        .ticket-detail-item { font-size: 0.85rem; margin-bottom: 6px; display: flex; justify-content: space-between; }
+
+        footer { background-color: #1A202C; color: #A0AEC0; padding: 25px 0; text-align: center; font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .container { flex-direction: column; gap: 15px; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .precios-box, .payment-options { flex-direction: column; }
+        }
+
+        @media print {
+            body * { visibility: hidden; }
+            #ticketModal, #ticketModal * { visibility: visible; }
+            #ticketModal { position: absolute; left: 0; top: 0; width: 100%; background: white; }
+            .no-print { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="file:///C:/Users/rodri/Documents/Bloc%20de%20notas%20de%20OneNote/Desktop/java/imagenes/logo.png" alt="Logo Ecoturs Ubalá" class="logo-img" onerror="this.style.display='none'">
+                <div class="logo-text">
+                    <h1>Ecoturs Ubalá</h1>
+                    <p>Explora, Diviértete y Aprende</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#login">Ingresar</a></li>
+                    <li><a href="#userRoutes" id="navRutasLink" style="display:none;">Rutas Reservables</a></li>
+                    <li><a href="#login" class="btn-nav" id="navAuthBtn">Ingresar / Registro</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>¡Vive la Magia del Guavio! </h2>
+            <p>Descubre senderos ecológicos, recorridos en lancha por el embalse y gastronomía campesina en Ubalá.</p>
+            <a href="#login" class="btn-action" style="margin-top: 15px;">Registrarse / Iniciar Sesión</a>
+        </div>
+    </section>
+
+    <!-- ACCESO Y REGISTRO -->
+    <section id="login" class="section-login">
+        <div class="container" style="display: block;">
+            <h3 class="section-title">Acceso a la Plataforma</h3>
+            
+            <div class="auth-container" id="authForms">
+                <div class="auth-box">
+                    <h4>Iniciar Sesión</h4>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="login-email">Correo Electrónico</label>
+                            <input type="email" id="login-email" placeholder="correo@ejemplo.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-pass">Contraseña</label>
+                            <input type="password" id="login-pass" placeholder="••••••••" required>
+                        </div>
+                        <button type="submit" class="btn-action" style="width: 100%;">Ingresar</button>
+                    </form>
+                </div>
+
+                <div class="auth-box">
+                    <h4>Crear Cuenta</h4>
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label for="reg-name">Nombre Completo</label>
+                            <input type="text" id="reg-name" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-email">Correo Electrónico</label>
+                            <input type="email" id="reg-email" placeholder="correo@ejemplo.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-pass">Contraseña</label>
+                            <input type="password" id="reg-pass" placeholder="••••••••" required>
+                        </div>
+                        <button type="submit" class="btn-action" style="width: 100%; background-color: var(--verde-lima);">Registrarme</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="user-panel" id="userPanel">
+                <h4 style="font-family: var(--fuente-titulo); font-size: 2.2rem; color: var(--amarillo-sol);" id="welcomeMsg">¡Hola!</h4>
+                <p style="margin-bottom: 20px; font-size: 1.1rem;">Selecciona tu fecha, tipo de alimentación y ruta o **Combo Especial**:</p>
+                <button class="btn-action" id="logoutBtn" style="background-color: var(--naranja-aventura);">Cerrar Sesión</button>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="userRoutes" class="section-user-routes">
+        <div class="container" style="display: block;">
+            <h3 class="section-title">Reserva tu Experiencia Ecoturística</h3>
+
+            
+            <div class="ruta-privada-card">
+                <img src="file:///C:/Users/rodri/Documents/Bloc%20de%20notas%20de%20OneNote/Desktop/java/imagenes/letrero%20de%20senderol.jpeg" onerror="this.src='https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=800&q=80'" alt="Senderos Ancestrales" class="ruta-privada-img">
+                <div class="ruta-privada-info">
+                    <h4>Ruta 1: Senderos Ancestrales del Guavio</h4>
+                    <span class="badge-duracion">⏱️ Duración: 5 a 6 Horas | Nivel: Medio</span>
+                    <p>Recorrido por antiguos caminos muiscas, observación de flora y fauna nativa y vistas panorámicas espectaculares.</p>
+                    
+                    <div class="gastronomia-box">
+                        <strong>🍽️ Menú Incluido:</strong>
+                        <br>• <em>Refrigerio:</em> Agua de panela caliente con queso campesino y garulla ubalense.
+                        <br>• <em>Almuerzo:</em> Fiambre campesino (arroz, carne, huevo, plátano y yuca envueltos en hoja de plátano).
+                    </div>
+
+                    <div class="precios-box">
+                        <div class="precio-item"><div class="label">Tarifa Individual Pasadía Todo Incluido</div><div class="val">$1.428.571 COP</div></div>
+                        <div class="precio-item" style="border-left: 2px solid #E2E8F0;"><div class="label">⭐ Combo Grupo Especial (4 Pax)</div><div class="val" style="color: var(--verde-principal);">$4.857.141 COP <small style="font-size:0.75rem; color:green;">(-15% Descuento)</small></div></div>
+                    </div>
+
+                    <div class="booking-calculator">
+                        <div class="calc-grid">
+                            <div>
+                                <label>Fecha del Recorrido:</label>
+                                <input type="date" id="dateR1">
+                            </div>
+                            <div>
+                                <label>Modalidad:</label>
+                                <select id="modR1" onchange="calcRuta(1, 1428571, 4857141)">
+                                    <option value="individual">Pasadía Individual ($1.428.571/persona)</option>
+                                    <option value="combo">Combo Grupo Especial (4 Pasajeros)</option>
+                                </select>
+                            </div>
+                            <div id="boxAdR1"><label>N° Personas:</label><input type="number" id="adR1" value="1" min="1" onchange="calcRuta(1, 1428571, 4857141)"></div>
+                            <div>
+                                <label>Preferencia de Menú:</label>
+                                <select id="dietR1">
+                                    <option value="Tradicional Campesino">Tradicional Campesino</option>
+                                    <option value="Vegetariano">Vegetariano</option>
+                                    <option value="Vegano">Vegano</option>
+                                    <option value="Sin Lactosa/Gluten">Sin Lactosa / Gluten</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="insurance-terms">
+                            <input type="checkbox" id="healthR1" checked>
+                            <label for="healthR1">Incluir Póliza de Seguro de Asistencia Médica y declaro aptitud física.</label>
+                        </div>
+
+                        <p style="font-weight: 600;">Total: <span id="totR1" style="color: var(--naranja-aventura); font-size: 1.3rem;">$1.428.571 COP</span></p>
+                        <button class="btn-action" style="margin-top: 10px; font-size: 1rem;" onclick="openPaymentModal('Ruta 1: Senderos Ancestrales', 1, 1428571, 4857141)">Proceder al Pago</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RUTA 2 -->
+            <div class="ruta-privada-card">
+                <img src="file:///C:/Users/rodri/Documents/Bloc%20de%20notas%20de%20OneNote/Desktop/java/imagenes/Puerto.jpeg" onerror="this.src='https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80'" alt="Embalse y Náutica" class="ruta-privada-img">
+                <div class="ruta-privada-info">
+                    <h4>Ruta 2: Lancha por el Embalse</h4>
+                    <span class="badge-duracion">⏱️ Duración: 7 Horas | Nivel: Fácil</span>
+                    <p>Navegación en lancha por el Embalse del Guavio con guía local e itinerario cultural.</p>
+
+                    <div class="gastronomia-box">
+                        <strong>🍽️ Menú Incluido:</strong>
+                        <br>• <em>Refrigerio:</em> Masato de arroz con mantecado tradicional.
+                        <br>• <em>Almuerzo:</em> Mojarra frita o Pechuga a la plancha con patacón, ensalada fresca y jugo natural.
+                    </div>
+
+                    <div class="precios-box">
+                        <div class="precio-item"><div class="label">Tarifa Individual Pasadía Todo Incluido</div><div class="val">$1.428.571 COP</div></div>
+                        <div class="precio-item" style="border-left: 2px solid #E2E8F0;"><div class="label">⭐ Combo Grupo Especial (4 Pax)</div><div class="val" style="color: var(--verde-principal);">$4.857.141 COP <small style="font-size:0.75rem; color:green;">(-15% Descuento)</small></div></div>
+                    </div>
+
+                    <div class="booking-calculator">
+                        <div class="calc-grid">
+                            <div>
+                                <label>Fecha del Recorrido:</label>
+                                <input type="date" id="dateR2">
+                            </div>
+                            <div>
+                                <label>Modalidad:</label>
+                                <select id="modR2" onchange="calcRuta(2, 1428571, 4857141)">
+                                    <option value="individual">Pasadía Individual ($1.428.571/persona)</option>
+                                    <option value="combo">Combo Grupo Especial (4 Pasajeros)</option>
+                                </select>
+                            </div>
+                            <div id="boxAdR2"><label>N° Personas:</label><input type="number" id="adR2" value="1" min="1" onchange="calcRuta(2, 1428571, 4857141)"></div>
+                            <div>
+                                <label>Preferencia de Menú:</label>
+                                <select id="dietR2">
+                                    <option value="Tradicional Campesino">Tradicional Campesino</option>
+                                    <option value="Vegetariano">Vegetariano</option>
+                                    <option value="Vegano">Vegano</option>
+                                    <option value="Sin Lactosa/Gluten">Sin Lactosa / Gluten</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="insurance-terms">
+                            <input type="checkbox" id="healthR2" checked>
+                            <label for="healthR2">Incluir Póliza de Seguro de Asistencia Médica y declaro aptitud física.</label>
+                        </div>
+
+                        <p style="font-weight: 600;">Total: <span id="totR2" style="color: var(--naranja-aventura); font-size: 1.3rem;">$1.428.571 COP</span></p>
+                        <button class="btn-action" style="margin-top: 10px; font-size: 1rem;" onclick="openPaymentModal('Ruta 2: Aventura Náutica', 2, 1428571, 4857141)">Proceder al Pago</button>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="ruta-privada-card">
+                <img src="file:///C:/Users/rodri/Documents/Bloc%20de%20notas%20de%20OneNote/Desktop/java/imagenes/yo%20amo%20a%20ubala.jpeg" onerror="this.src='https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80'" alt="Cascada y Cañón" class="ruta-privada-img">
+                <div class="ruta-privada-info">
+                    <h4>Ruta 3: Ubala </h4>
+                    <span class="badge-duracion">⏱️ Duración: 4 Horas | Nivel: Bajo</span>
+                    <p>Caminata suave apta para niños y adultos mayores con historia y tradicion del pueblo.</p>
+
+                    <div class="gastronomia-box">
+                        <strong>🍽️ Menú Incluido:</strong>
+                        <br>• <em>Refrigerio:</em> Ensalada de frutas frescas con miel de abejas local.
+                        <br>• <em>Almuerzo:</em> Sancocho de gallina criolla en leña con aguacate y arepa campesina.
+                    </div>
+
+                    <div class="precios-box">
+                        <div class="precio-item"><div class="label">Tarifa Individual Pasadía Todo Incluido</div><div class="val">$1.428.571 COP</div></div>
+                        <div class="precio-item" style="border-left: 2px solid #E2E8F0;"><div class="label">⭐ Combo Grupo Especial (4 Pax)</div><div class="val" style="color: var(--verde-principal);">$4.857.141 COP <small style="font-size:0.75rem; color:green;">(-15% Descuento)</small></div></div>
+                    </div>
+
+                    <div class="booking-calculator">
+                        <div class="calc-grid">
+                            <div>
+                                <label>Fecha del Recorrido:</label>
+                                <input type="date" id="dateR3">
+                            </div>
+                            <div>
+                                <label>Modalidad:</label>
+                                <select id="modR3" onchange="calcRuta(3, 1428571, 4857141)">
+                                    <option value="individual">Pasadía Individual ($1.428.571/persona)</option>
+                                    <option value="combo">Combo Grupo Especial (4 Pasajeros)</option>
+                                </select>
+                            </div>
+                            <div id="boxAdR3"><label>N° Personas:</label><input type="number" id="adR3" value="1" min="1" onchange="calcRuta(3, 1428571, 4857141)"></div>
+                            <div>
+                                <label>Preferencia de Menú:</label>
+                                <select id="dietR3">
+                                    <option value="Tradicional Campesino">Tradicional Campesino</option>
+                                    <option value="Vegetariano">Vegetariano</option>
+                                    <option value="Vegano">Vegano</option>
+                                    <option value="Sin Lactosa/Gluten">Sin Lactosa / Gluten</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="insurance-terms">
+                            <input type="checkbox" id="healthR3" checked>
+                            <label for="healthR3">Incluir Póliza de Seguro de Asistencia Médica y declaro aptitud física.</label>
+                        </div>
+
+                        <p style="font-weight: 600;">Total: <span id="totR3" style="color: var(--naranja-aventura); font-size: 1.3rem;">$1.428.571 COP</span></p>
+                        <button class="btn-action" style="margin-top: 10px; font-size: 1rem;" onclick="openPaymentModal('Ruta 3: Cascada y Cañón', 3, 1428571, 4857141)">Proceder al Pago</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RUTA 4 -->
+            <div class="ruta-privada-card">
+                <img src="file:///C:/Users/rodri/Documents/Bloc%20de%20notas%20de%20OneNote/Desktop/java/imagenes/sendero%20Ecologico.jpeg" onerror="this.src='https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80'" alt="Sabores Campesinos" class="ruta-privada-img">
+                <div class="ruta-privada-info">
+                    <h4>Ruta 4: Recoorrido ecologico de Gachala</h4>
+                    <span class="badge-duracion">⏱️ Duración: 6 Horas | Nivel: Bajo</span>
+                    <p>Experiencia de caminata ecologica en Gachala y por el pueblo.</p>
+
+                    <div class="gastronomia-box">
+                        <strong>🍽️ Menú Incluido:</strong>
+                        <br>• <em>Taller/Refrigerio:</em> Amasijos recién horneados por ti + café orgánico ubalense.
+                        <br>• <em>Almuerzo:</em> Carne a la llanera con papa salada, guacamole y plátano asado.
+                    </div>
+
+                    <div class="precios-box">
+                        <div class="precio-item"><div class="label">Tarifa Individual Pasadía Todo Incluido</div><div class="val">$1.428.571 COP</div></div>
+                        <div class="precio-item" style="border-left: 2px solid #E2E8F0;"><div class="label">⭐ Combo Grupo Especial (4 Pax)</div><div class="val" style="color: var(--verde-principal);">$4.857.141 COP <small style="font-size:0.75rem; color:green;">(-15% Descuento)</small></div></div>
+                    </div>
+
+                    <div class="booking-calculator">
+                        <div class="calc-grid">
+                            <div>
+                                <label>Fecha del Recorrido:</label>
+                                <input type="date" id="dateR4">
+                            </div>
+                            <div>
+                                <label>Modalidad:</label>
+                                <select id="modR4" onchange="calcRuta(4, 1428571, 4857141)">
+                                    <option value="individual">Pasadía Individual ($1.428.571/persona)</option>
+                                    <option value="combo">Combo Grupo Especial (4 Pasajeros)</option>
+                                </select>
+                            </div>
+                            <div id="boxAdR4"><label>N° Personas:</label><input type="number" id="adR4" value="1" min="1" onchange="calcRuta(4, 1428571, 4857141)"></div>
+                            <div>
+                                <label>Preferencia de Menú:</label>
+                                <select id="dietR4">
+                                    <option value="Tradicional Campesino">Tradicional Campesino</option>
+                                    <option value="Vegetariano">Vegetariano</option>
+                                    <option value="Vegano">Vegano</option>
+                                    <option value="Sin Lactosa/Gluten">Sin Lactosa / Gluten</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="insurance-terms">
+                            <input type="checkbox" id="healthR4" checked>
+                            <label for="healthR4">Incluir Póliza de Seguro de Asistencia Médica y declaro aptitud física.</label>
+                        </div>
+
+                        <p style="font-weight: 600;">Total: <span id="totR4" style="color: var(--naranja-aventura); font-size: 1.3rem;">$1.428.571 COP</span></p>
+                        <button class="btn-action" style="margin-top: 10px; font-size: 1rem;" onclick="openPaymentModal('Ruta 4: Sabores Campesinos', 4, 1428571, 4857141)">Proceder al Pago</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- VENTANA POPUP PASARELA DE PAGO INTERACTIVA -->
+    <div class="modal-overlay" id="paymentModal">
+        <div class="modal-card">
+            <h4>Pasarela de Pago Segura 🔒</h4>
+            <p style="font-size: 0.88rem; text-align: center; color: #4A5568;" id="modalRouteSummary"></p>
+
+            <div class="payment-options">
+                <div class="pay-tab active" onclick="selectPayTab('qr')">📲 QR Nequi/Daviplata</div>
+                <div class="pay-tab" onclick="selectPayTab('card')">💳 Tarjeta Crédito/Débito</div>
+                <div class="pay-tab" onclick="selectPayTab('pse')">🏦 PSE</div>
+            </div>
+
+            <!-- FORMULARIO 1: QR -->
+            <div id="payFormQR" class="pay-form-panel active">
+                <div class="qr-box">
+                    <p style="font-size: 0.85rem;">Escanea el código QR desde tu App de <strong>Nequi, Daviplata o Bancolombia</strong>:</p>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=EcotursUbalaReserva" alt="Código QR Ecoturs">
+                    <p style="font-size: 0.85rem;">O transfiere al número: <strong>310 000 0000</strong></p>
+                </div>
+                <div class="form-group" style="margin-top: 12px;">
+                    <label style="font-size: 0.85rem;">Número de Comprobante / N° Transacción:</label>
+                    <input type="text" id="qrRef" placeholder="Ej: M123456" required>
+                </div>
+            </div>
+
+            <!-- FORMULARIO 2: TARJETA -->
+            <div id="payFormCard" class="pay-form-panel">
+                <div class="form-group">
+                    <label style="font-size: 0.85rem;">Nombre en la Tarjeta:</label>
+                    <input type="text" placeholder="Como figura en la tarjeta">
+                </div>
+                <div class="form-group">
+                    <label style="font-size: 0.85rem;">Número de Tarjeta:</label>
+                    <input type="text" maxlength="16" placeholder="0000 0000 0000 0000">
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <div class="form-group" style="flex: 1;">
+                        <label style="font-size: 0.85rem;">Vencimiento:</label>
+                        <input type="text" placeholder="MM/AA">
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label style="font-size: 0.85rem;">CVC / CVV:</label>
+                        <input type="password" maxlength="4" placeholder="123">
+                    </div>
+                </div>
+            </div>
+
+            <!-- FORMULARIO 3: PSE -->
+            <div id="payFormPSE" class="pay-form-panel">
+                <div class="form-group">
+                    <label style="font-size: 0.85rem;">Selecciona tu Banco:</label>
+                    <select style="width: 100%; padding: 8px; border-radius: 8px;">
+                        <option>Bancolombia</option>
+                        <option>Nequi</option>
+                        <option>Daviplata / Davivienda</option>
+                        <option>Banco de Bogotá</option>
+                        <option>BBVA Colombia</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label style="font-size: 0.85rem;">Documento de Identidad del Titular:</label>
+                    <input type="text" placeholder="N° de Cédula">
+                </div>
+            </div>
+
+            <div style="margin-top: 15px; display: flex; gap: 10px;">
+                <button class="btn-action" style="flex: 1; background-color: #718096;" onclick="closePaymentModal()">Cancelar</button>
+                <button class="btn-action" style="flex: 2; background-color: var(--verde-principal);" onclick="confirmFinalPayment()">Finalizar y Generar Ticket</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE TICKET FINAL GENERADO -->
+    <div class="modal-overlay" id="ticketModal">
+        <div class="modal-card" style="max-width: 500px;">
+            <div class="ticket-box">
+                <div class="ticket-header">
+                    <h5>🍃 ECOTURS UBALÁ 🍃</h5>
+                    <p style="font-size: 0.8rem; color: #718096;">Comprobante de Reserva Oficial</p>
+                </div>
+
+                <div class="ticket-detail-item"><strong>Titular:</strong> <span id="tkUser"></span></div>
+                <div class="ticket-detail-item"><strong>Email:</strong> <span id="tkEmail"></span></div>
+                <div class="ticket-detail-item"><strong>Ruta:</strong> <span id="tkRoute"></span></div>
+                <div class="ticket-detail-item"><strong>Fecha Reservada:</strong> <span id="tkDate" style="color:var(--naranja-aventura); font-weight:bold;"></span></div>
+                <div class="ticket-detail-item"><strong>Modalidad:</strong> <span id="tkMod"></span></div>
+                <div class="ticket-detail-item"><strong>Asistentes:</strong> <span id="tkPax"></span></div>
+                <div class="ticket-detail-item"><strong>Menú Elegido:</strong> <span id="tkDiet"></span></div>
+                <div class="ticket-detail-item"><strong>Seguro Médico:</strong> <span id="tkInsurance">Incluido / Activo</span></div>
+                <div class="ticket-detail-item" style="border-top: 1px solid #E2E8F0; padding-top: 8px; margin-top: 8px; font-size: 1rem;">
+                    <strong>Total Pagado:</strong> <span id="tkTotal" style="color: var(--verde-principal); font-weight: bold;"></span>
+                </div>
+
+                <div style="text-align: center; margin-top: 15px;">
+                    <p style="font-size: 0.75rem; color: #718096;">Muestra este código QR al guía en el punto de encuentro:</p>
+                    <img id="tkQr" src="" alt="Código QR de Verificación" style="width: 130px; height: 130px; margin-top: 5px; border: 1px solid #ccc; border-radius: 8px;">
+                </div>
+            </div>
+
+            <div class="no-print" style="margin-top: 15px; display: flex; gap: 10px;">
+                <button class="btn-action" style="flex: 1; background-color: var(--naranja-aventura);" onclick="window.print()">🖨️ Imprimir / Guardar PDF</button>
+                <button class="btn-action" style="flex: 1; background-color: #718096;" onclick="closeTicketModal()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container" style="display: block;">
+            <p>&copy; 2026 Ecoturs Ubalá - Vivencia y Naturaleza en la Región del Guavio</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const today = new Date().toISOString().split('T')[0];
+            for (let i = 1; i <= 4; i++) {
+                const dateInput = document.getElementById(`dateR${i}`);
+                if (dateInput) {
+                    dateInput.min = today;
+                    dateInput.value = today;
+                }
+            }
+        });
+
+        if (!localStorage.getItem('usersDB')) localStorage.setItem('usersDB', JSON.stringify([]));
+
+        const registerForm = document.getElementById('registerForm');
+        const loginForm = document.getElementById('loginForm');
+        const authForms = document.getElementById('authForms');
+        const userPanel = document.getElementById('userPanel');
+        const welcomeMsg = document.getElementById('welcomeMsg');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const navAuthBtn = document.getElementById('navAuthBtn');
+        const navRutasLink = document.getElementById('navRutasLink');
+        const userRoutesSection = document.getElementById('userRoutes');
+
+        let currentBooking = {};
+
+        function checkUserSession() {
+            const activeUser = JSON.parse(localStorage.getItem('activeUser'));
+            
+            if (activeUser && activeUser.name) {
+                authForms.style.display = 'none';
+                userPanel.style.display = 'block';
+                welcomeMsg.textContent = `¡Hola, ${activeUser.name}! 👋`;
+                navAuthBtn.textContent = activeUser.name;
+                userRoutesSection.style.display = 'block';
+                navRutasLink.style.display = 'inline-block';
+            } else {
+                authForms.style.display = 'flex';
+                userPanel.style.display = 'none';
+                navAuthBtn.textContent = 'Ingresar / Registro';
+                userRoutesSection.style.display = 'none';
+                navRutasLink.style.display = 'none';
+            }
+        }
+
+        function calcRuta(id, priceUnit, priceCombo) {
+            const mod = document.getElementById(`modR${id}`).value;
+            const boxAd = document.getElementById(`boxAdR${id}`);
+
+            if (mod === 'combo') {
+                boxAd.style.display = 'none';
+                document.getElementById(`totR${id}`).textContent = `$${priceCombo.toLocaleString()} COP`;
+            } else {
+                boxAd.style.display = 'block';
+                const adults = parseInt(document.getElementById(`adR${id}`).value) || 1;
+                const total = adults * priceUnit;
+                document.getElementById(`totR${id}`).textContent = `$${total.toLocaleString()} COP`;
+            }
+        }
+
+        function openPaymentModal(routeName, id, priceUnit, priceCombo) {
+            const activeUser = JSON.parse(localStorage.getItem('activeUser'));
+            if (!activeUser) {
+                alert('Debes iniciar sesión para reservar.');
+                window.location.href = '#login';
+                return;
+            }
+
+            const chosenDate = document.getElementById(`dateR${id}`).value;
+            if (!chosenDate) {
+                alert('Por favor selecciona una fecha válida para tu recorrido.');
+                return;
+            }
+
+            const healthCheck = document.getElementById(`healthR${id}`).checked;
+            if (!healthCheck) {
+                alert('Debes aceptar las condiciones de aptitud física y seguro médico para continuar.');
+                return;
+            }
+
+            const mod = document.getElementById(`modR${id}`).value;
+            const diet = document.getElementById(`dietR${id}`).value;
+            let pax = 0, total = 0;
+
+            if (mod === 'combo') {
+                pax = 4;
+                total = priceCombo;
+            } else {
+                pax = parseInt(document.getElementById(`adR${id}`).value) || 1;
+                total = pax * priceUnit;
+            }
+
+            currentBooking = {
+                user: activeUser,
+                routeName: routeName,
+                date: chosenDate,
+                modality: mod === 'combo' ? 'Combo Grupo Especial (4 Pax)' : 'Pasadía Individual',
+                pax: pax,
+                diet: diet,
+                total: total
+            };
+
+            document.getElementById('modalRouteSummary').innerHTML = `
+                <strong>${routeName}</strong><br>
+                📅 Fecha: ${chosenDate} | 🥗 Menú: ${diet}<br>
+                Total a Pagar: <span style="color:var(--naranja-aventura); font-weight:bold;">$${total.toLocaleString()} COP</span>
+            `;
+
+            document.getElementById('paymentModal').style.display = 'flex';
+        }
+
+        function selectPayTab(type) {
+            document.querySelectorAll('.pay-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.pay-form-panel').forEach(p => p.classList.remove('active'));
+
+            if (type === 'qr') {
+                document.querySelectorAll('.pay-tab')[0].classList.add('active');
+                document.getElementById('payFormQR').classList.add('active');
+            } else if (type === 'card') {
+                document.querySelectorAll('.pay-tab')[1].classList.add('active');
+                document.getElementById('payFormCard').classList.add('active');
+            } else if (type === 'pse') {
+                document.querySelectorAll('.pay-tab')[2].classList.add('active');
+                document.getElementById('payFormPSE').classList.add('active');
+            }
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+
+        function closeTicketModal() {
+            document.getElementById('ticketModal').style.display = 'none';
+        }
+
+        function confirmFinalPayment() {
+            closePaymentModal();
+
+            document.getElementById('tkUser').textContent = currentBooking.user.name;
+            document.getElementById('tkEmail').textContent = currentBooking.user.email;
+            document.getElementById('tkRoute').textContent = currentBooking.routeName;
+            document.getElementById('tkDate').textContent = currentBooking.date;
+            document.getElementById('tkMod').textContent = currentBooking.modality;
+            document.getElementById('tkPax').textContent = `${currentBooking.pax} Persona(s)`;
+            document.getElementById('tkDiet').textContent = currentBooking.diet;
+            document.getElementById('tkTotal').textContent = `$${currentBooking.total.toLocaleString()} COP`;
+
+            const qrData = encodeURIComponent(`EcotursTicket|User:${currentBooking.user.name}|Route:${currentBooking.routeName}|Date:${currentBooking.date}|Total:${currentBooking.total}`);
+            document.getElementById('tkQr').src = `https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=${qrData}`;
+
+            document.getElementById('ticketModal').style.display = 'flex';
+        }
+
+        registerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('reg-name').value.trim();
+            const email = document.getElementById('reg-email').value.trim().toLowerCase();
+            const pass = document.getElementById('reg-pass').value;
+
+            const users = JSON.parse(localStorage.getItem('usersDB'));
+            if (users.some(u => u.email === email)) {
+                alert('Este correo ya está registrado.');
+                return;
+            }
+
+            const newUser = { name, email, pass };
+            users.push(newUser);
+            localStorage.setItem('usersDB', JSON.stringify(users));
+            localStorage.setItem('activeUser', JSON.stringify(newUser));
+
+            checkUserSession();
+            userRoutesSection.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value.trim().toLowerCase();
+            const pass = document.getElementById('login-pass').value;
+
+            const users = JSON.parse(localStorage.getItem('usersDB'));
+            const user = users.find(u => u.email === email && u.pass === pass);
+
+            if (user) {
+                localStorage.setItem('activeUser', JSON.stringify(user));
+                loginForm.reset();
+                checkUserSession();
+                userRoutesSection.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert('Credenciales incorrectas.');
+            }
+        });
+
+        logoutBtn.addEventListener('click', function() {
+            localStorage.removeItem('activeUser');
+            checkUserSession();
+        });
+
+        checkUserSession();
+    </script>
+</body>
+</html>
