@@ -1,3 +1,4 @@
+<img width="199" height="195" alt="QR pago" src="https://github.com/user-attachments/assets/c55d0d5a-9d94-4cd5-bbc6-6e5ad453b739" />
 <img width="721" height="1600" alt="iglecia de Gachala" src="https://github.com/user-attachments/assets/5324bf03-6463-4c39-8a7b-1b227bf2c706" />
 <img width="721" height="1600" alt="letrero de senderol" src="https://github.com/user-attachments/assets/4fda2da3-655d-4f3e-8f17-41262e32976b" />
 <img width="1600" height="721" alt="Puerto" src="https://github.com/user-attachments/assets/6089561f-8788-43f8-84fe-04018e2d0599" />
