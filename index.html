@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -321,7 +320,7 @@
             <nav>
                 <ul>
                     <li><a href="#">Inicio</a></li>
-                    <li><a href="#login">Ingresar</a></li>
+                    <li><a href="#login" id="navLoginLink">Ingresar</a></li>
                     <li><a href="#userRoutes" id="navRutasLink" style="display:none;">Rutas Reservables</a></li>
                     <li><a href="#login" class="btn-nav" id="navAuthBtn">Ingresar / Registro</a></li>
                 </ul>
@@ -340,7 +339,7 @@
     <!-- ACCESO Y REGISTRO -->
     <section id="login" class="section-login">
         <div class="container" style="display: block;">
-            <h3 class="section-title">Acceso a la Plataforma</h3>
+            <h3 class="section-title" id="authTitle">Acceso a la Plataforma</h3>
             
             <div class="auth-container" id="authForms">
                 <div class="auth-box">
@@ -386,7 +385,7 @@
         </div>
     </section>
 
-    <!-- RUTAS CON NUEVOS PRECIOS -->
+    <!-- RUTAS CON PRECIOS ACTUALIZADOS -->
     <section id="userRoutes" class="section-user-routes">
         <div class="container" style="display: block;">
             <h3 class="section-title">Reserva tu Experiencia Ecoturística</h3>
@@ -434,12 +433,10 @@
                                 </select>
                             </div>
                         </div>
-
                         <div class="insurance-terms">
                             <input type="checkbox" id="healthR1" checked>
                             <label for="healthR1">Incluir Póliza de Seguro de Asistencia Médica y declaro aptitud física.</label>
                         </div>
-
                         <p style="font-weight: 600;">Total: <span id="totR1" style="color: var(--naranja-aventura); font-size: 1.3rem;">$357.000 COP</span></p>
                         <button class="btn-action" style="margin-top: 10px; font-size: 1rem;" onclick="openPaymentModal('Ruta 1: Senderos del Guavio', 1, 357000, 1428000)">Proceder al Pago</button>
                     </div>
@@ -489,12 +486,10 @@
                                 </select>
                             </div>
                         </div>
-
                         <div class="insurance-terms">
                             <input type="checkbox" id="healthR2" checked>
                             <label for="healthR2">Incluir Póliza de Seguro de Asistencia Médica y declaro aptitud física.</label>
                         </div>
-
                         <p style="font-weight: 600;">Total: <span id="totR2" style="color: var(--naranja-aventura); font-size: 1.3rem;">$357.000 COP</span></p>
                         <button class="btn-action" style="margin-top: 10px; font-size: 1rem;" onclick="openPaymentModal('Ruta 2: Lancha por el Embalse', 2, 357000, 1428000)">Proceder al Pago</button>
                     </div>
@@ -544,12 +539,10 @@
                                 </select>
                             </div>
                         </div>
-
                         <div class="insurance-terms">
                             <input type="checkbox" id="healthR3" checked>
                             <label for="healthR3">Incluir Póliza de Seguro de Asistencia Médica y declaro aptitud física.</label>
                         </div>
-
                         <p style="font-weight: 600;">Total: <span id="totR3" style="color: var(--naranja-aventura); font-size: 1.3rem;">$357.000 COP</span></p>
                         <button class="btn-action" style="margin-top: 10px; font-size: 1rem;" onclick="openPaymentModal('Ruta 3: Ubalá Histórico', 3, 357000, 1428000)">Proceder al Pago</button>
                     </div>
@@ -599,18 +592,15 @@
                                 </select>
                             </div>
                         </div>
-
                         <div class="insurance-terms">
                             <input type="checkbox" id="healthR4" checked>
                             <label for="healthR4">Incluir Póliza de Seguro de Asistencia Médica y declaro aptitud física.</label>
                         </div>
-
                         <p style="font-weight: 600;">Total: <span id="totR4" style="color: var(--naranja-aventura); font-size: 1.3rem;">$357.000 COP</span></p>
                         <button class="btn-action" style="margin-top: 10px; font-size: 1rem;" onclick="openPaymentModal('Ruta 4: Recorrido por Gachalá', 4, 357000, 1428000)">Proceder al Pago</button>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -626,16 +616,16 @@
                 <div class="pay-tab" onclick="selectPayTab('pse')">🏦 PSE</div>
             </div>
 
-            <!-- FORMULARIO 1: QR -->
+            <!-- FORMULARIO 1: QR Y TRANSFERENCIA DIRECTA CON TU NEQUI -->
             <div id="payFormQR" class="pay-form-panel active">
                 <div class="qr-box">
                     <p style="font-size: 0.85rem;">Escanea el código QR desde tu App de <strong>Nequi, Daviplata o Bancolombia</strong>:</p>
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=EcotursUbalaReserva" alt="Código QR Ecoturs">
-                    <p style="font-size: 0.85rem;">O transfiere al número: <strong>310 000 0000</strong></p>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Nequi3233167202" alt="Código QR Nequi Ecoturs">
+                    <p style="font-size: 0.9rem; margin-top: 6px;">O transfiere directamente al Nequi: <strong style="color: var(--verde-principal); font-size: 1.1rem;">323 316 7202</strong></p>
                 </div>
                 <div class="form-group" style="margin-top: 12px;">
                     <label style="font-size: 0.85rem;">Número de Comprobante / N° Transacción:</label>
-                    <input type="text" id="qrRef" placeholder="Ej: M123456">
+                    <input type="text" id="qrRef" placeholder="Ej: M123456" required>
                 </div>
             </div>
 
@@ -647,16 +637,16 @@
                 </div>
                 <div class="form-group">
                     <label style="font-size: 0.85rem;">Número de Tarjeta:</label>
-                    <input type="text" maxlength="16" placeholder="0000 0000 0000 0000">
+                    <input type="text" placeholder="0000 0000 0000 0000" maxlength="19">
                 </div>
                 <div style="display: flex; gap: 10px;">
                     <div class="form-group" style="flex: 1;">
                         <label style="font-size: 0.85rem;">Vencimiento:</label>
-                        <input type="text" placeholder="MM/AA">
+                        <input type="text" placeholder="MM/AA" maxlength="5">
                     </div>
                     <div class="form-group" style="flex: 1;">
-                        <label style="font-size: 0.85rem;">CVC / CVV:</label>
-                        <input type="password" maxlength="4" placeholder="123">
+                        <label style="font-size: 0.85rem;">CVC:</label>
+                        <input type="password" placeholder="123" maxlength="4">
                     </div>
                 </div>
             </div>
@@ -679,32 +669,33 @@
                 </div>
             </div>
 
-            <div style="margin-top: 15px; display: flex; gap: 10px;">
-                <button class="btn-action" style="flex: 1; background-color: #718096;" onclick="closePaymentModal()">Cancelar</button>
-                <button class="btn-action" style="flex: 2; background-color: var(--verde-principal);" onclick="confirmFinalPayment()">Finalizar y Generar Ticket</button>
+            <div style="display: flex; gap: 10px; margin-top: 15px;">
+                <button class="btn-action" style="flex: 1; background-color: #A0AEC0;" onclick="closeModal('paymentModal')">Cancelar</button>
+                <button class="btn-action" style="flex: 2; background-color: var(--verde-principal);" onclick="processPayment()">Confirmar y Pagar</button>
             </div>
         </div>
     </div>
 
-    <!-- MODAL DE TICKET FINAL GENERADO -->
+    <!-- VENTANA POPUP VOUCHER DE COMPRA CON QR GENERADO -->
     <div class="modal-overlay" id="ticketModal">
         <div class="modal-card" style="max-width: 500px;">
             <div class="ticket-box">
                 <div class="ticket-header">
                     <h5>🍃 ECOTURS UBALÁ 🍃</h5>
-                    <p style="font-size: 0.8rem; color: #718096;">Comprobante de Reserva Oficial</p>
+                    <p style="font-size: 0.8rem; color: #718096;">Comprobante Oficial de Reserva</p>
                 </div>
-
-                <div class="ticket-detail-item"><strong>Titular:</strong> <span id="tkUser"></span></div>
-                <div class="ticket-detail-item"><strong>Email:</strong> <span id="tkEmail"></span></div>
-                <div class="ticket-detail-item"><strong>Ruta:</strong> <span id="tkRoute"></span></div>
-                <div class="ticket-detail-item"><strong>Fecha Reservada:</strong> <span id="tkDate" style="color:var(--naranja-aventura); font-weight:bold;"></span></div>
-                <div class="ticket-detail-item"><strong>Modalidad:</strong> <span id="tkMod"></span></div>
-                <div class="ticket-detail-item"><strong>Asistentes:</strong> <span id="tkPax"></span></div>
-                <div class="ticket-detail-item"><strong>Menú Elegido:</strong> <span id="tkDiet"></span></div>
-                <div class="ticket-detail-item"><strong>Seguro Médico:</strong> <span id="tkInsurance">Incluido / Activo</span></div>
-                <div class="ticket-detail-item" style="border-top: 1px solid #E2E8F0; padding-top: 8px; margin-top: 8px; font-size: 1rem;">
-                    <strong>Total Pagado:</strong> <span id="tkTotal" style="color: var(--verde-principal); font-weight: bold;"></span>
+                <div class="ticket-detail-item"><span>Código Ticket:</span><strong id="tkCode">#ECO-0000</strong></div>
+                <div class="ticket-detail-item"><span>Titular:</span><strong id="tkUser">Nombre Usuario</strong></div>
+                <div class="ticket-detail-item"><span>Correo:</span><strong id="tkEmail">correo@ejemplo.com</strong></div>
+                <div class="ticket-detail-item"><span>Ruta:</span><strong id="tkRoute">Nombre Ruta</strong></div>
+                <div class="ticket-detail-item"><span>Fecha Viaje:</span><strong id="tkDate" style="color:var(--naranja-aventura);">AAAA-MM-DD</strong></div>
+                <div class="ticket-detail-item"><span>Modalidad:</span><strong id="tkMod">Individual</strong></div>
+                <div class="ticket-detail-item"><span>Pasajeros:</span><strong id="tkPax">1 Pax</strong></div>
+                <div class="ticket-detail-item"><span>Alimentación:</span><strong id="tkDiet">Tradicional</strong></div>
+                <div class="ticket-detail-item"><span>Seguro Médico:</span><strong style="color:green;">Incluido / Activo</strong></div>
+                <div class="ticket-detail-item" style="border-top: 1px dashed #CBD5E0; padding-top: 8px; margin-top: 8px;">
+                    <span style="font-size: 1rem; font-weight: bold;">Total Pagado:</span>
+                    <strong id="tkTotal" style="font-size: 1.1rem; color: var(--verde-principal);">$0 COP</strong>
                 </div>
 
                 <div style="text-align: center; margin-top: 15px;">
@@ -713,163 +704,200 @@
                 </div>
             </div>
 
-            <div class="no-print" style="margin-top: 15px; display: flex; gap: 10px;">
-                <button class="btn-action" style="flex: 1; background-color: var(--naranja-aventura);" onclick="window.print()">🖨️ Imprimir / Guardar PDF</button>
-                <button class="btn-action" style="flex: 1; background-color: #718096;" onclick="closeTicketModal()">Cerrar</button>
+            <div style="display: flex; gap: 10px; margin-top: 15px;" class="no-print">
+                <button class="btn-action" style="flex: 1; background-color: var(--naranja-aventura);" onclick="window.print()">🖨️ Imprimir / PDF</button>
+                <button class="btn-action" style="flex: 1; background-color: #718096;" onclick="closeModal('ticketModal')">Cerrar</button>
             </div>
         </div>
     </div>
 
     <footer>
-        <div class="container" style="display: block;">
-            <p>&copy; 2026 Ecoturs Ubalá - Vivencia y Naturaleza en la Región del Guavio</p>
+        <div class="container" style="justify-content: center; flex-direction: column; text-align: center;">
+            <p>&copy; 2026 Ecoturs Ubalá - Turismo Ecológico y Comunitario en la Región del Guavio.</p>
+            <p style="font-size: 0.8rem; margin-top: 5px;">Ubalá, Cundinamarca, Colombia 🇨🇴</p>
         </div>
     </footer>
 
+    <!-- LÓGICA JAVASCRIPT -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        let currentBooking = {
+            routeName: '',
+            numRuta: 0,
+            date: '',
+            modality: '',
+            pax: 1,
+            diet: '',
+            total: 0
+        };
+
+        document.addEventListener("DOMContentLoaded", () => {
             const today = new Date().toISOString().split('T')[0];
-            for (let i = 1; i <= 4; i++) {
+            for(let i = 1; i <= 4; i++) {
                 const dateInput = document.getElementById(`dateR${i}`);
-                if (dateInput) {
+                if(dateInput) {
                     dateInput.min = today;
                     dateInput.value = today;
                 }
             }
+            checkLoginState();
         });
 
-        if (!localStorage.getItem('usersDB')) localStorage.setItem('usersDB', JSON.stringify([]));
-
-        const registerForm = document.getElementById('registerForm');
         const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
         const authForms = document.getElementById('authForms');
         const userPanel = document.getElementById('userPanel');
         const welcomeMsg = document.getElementById('welcomeMsg');
         const logoutBtn = document.getElementById('logoutBtn');
-        const navAuthBtn = document.getElementById('navAuthBtn');
         const navRutasLink = document.getElementById('navRutasLink');
+        const navAuthBtn = document.getElementById('navAuthBtn');
         const userRoutesSection = document.getElementById('userRoutes');
 
-        let currentBooking = {};
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('reg-name').value.trim();
+            const email = document.getElementById('reg-email').value.trim().toLowerCase();
+            const pass = document.getElementById('reg-pass').value;
 
-        function checkUserSession() {
-            const activeUser = JSON.parse(localStorage.getItem('activeUser'));
-            
-            if (activeUser && activeUser.name) {
+            const user = { name, email, pass };
+            localStorage.setItem('ecoturs_user', JSON.stringify(user));
+            localStorage.setItem('ecoturs_session', JSON.stringify(user));
+            checkLoginState();
+        });
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value.trim().toLowerCase();
+            const pass = document.getElementById('login-pass').value;
+            const savedUser = JSON.parse(localStorage.getItem('ecoturs_user'));
+
+            if (savedUser && savedUser.email === email && savedUser.pass === pass) {
+                localStorage.setItem('ecoturs_session', JSON.stringify(savedUser));
+                checkLoginState();
+            } else {
+                alert('Credenciales incorrectas o usuario no registrado.');
+            }
+        });
+
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('ecoturs_session');
+            checkLoginState();
+        });
+
+        function checkLoginState() {
+            const activeUser = JSON.parse(localStorage.getItem('ecoturs_session'));
+            if (activeUser) {
                 authForms.style.display = 'none';
                 userPanel.style.display = 'block';
                 welcomeMsg.textContent = `¡Hola, ${activeUser.name}! 👋`;
-                navAuthBtn.textContent = activeUser.name;
+                navRutasLink.style.display = 'inline';
                 userRoutesSection.style.display = 'block';
-                navRutasLink.style.display = 'inline-block';
+                navAuthBtn.textContent = activeUser.name;
             } else {
                 authForms.style.display = 'flex';
                 userPanel.style.display = 'none';
-                navAuthBtn.textContent = 'Ingresar / Registro';
-                userRoutesSection.style.display = 'none';
                 navRutasLink.style.display = 'none';
+                userRoutesSection.style.display = 'none';
+                navAuthBtn.textContent = 'Ingresar / Registro';
             }
         }
 
-        function calcRuta(id, priceUnit, priceCombo) {
+        function calcRuta(id, precioInd, precioCombo) {
             const mod = document.getElementById(`modR${id}`).value;
             const boxAd = document.getElementById(`boxAdR${id}`);
+            const paxInput = document.getElementById(`adR${id}`);
+            const totSpan = document.getElementById(`totR${id}`);
 
+            let total = 0;
             if (mod === 'combo') {
                 boxAd.style.display = 'none';
-                document.getElementById(`totR${id}`).textContent = `$${priceCombo.toLocaleString()} COP`;
+                total = precioCombo;
             } else {
                 boxAd.style.display = 'block';
-                const adults = parseInt(document.getElementById(`adR${id}`).value) || 1;
-                const total = adults * priceUnit;
-                document.getElementById(`totR${id}`).textContent = `$${total.toLocaleString()} COP`;
+                const pax = parseInt(paxInput.value) || 1;
+                total = pax * precioInd;
             }
+
+            totSpan.textContent = `$${total.toLocaleString('es-CO')} COP`;
         }
 
-        function openPaymentModal(routeName, id, priceUnit, priceCombo) {
-            const activeUser = JSON.parse(localStorage.getItem('activeUser'));
+        function openPaymentModal(routeName, numRuta, precioInd, precioCombo) {
+            const activeUser = JSON.parse(localStorage.getItem('ecoturs_session'));
             if (!activeUser) {
-                alert('Debes iniciar sesión para reservar.');
+                alert('Debes iniciar sesión para realizar una reserva.');
                 window.location.href = '#login';
                 return;
             }
 
-            const chosenDate = document.getElementById(`dateR${id}`).value;
-            if (!chosenDate) {
-                alert('Por favor selecciona una fecha válida para tu recorrido.');
+            const date = document.getElementById(`dateR${numRuta}`).value;
+            const mod = document.getElementById(`modR${numRuta}`).value;
+            const pax = mod === 'combo' ? 4 : (parseInt(document.getElementById(`adR${numRuta}`).value) || 1);
+            const diet = document.getElementById(`dietR${numRuta}`).value;
+            const healthChecked = document.getElementById(`healthR${numRuta}`).checked;
+
+            if (!date) {
+                alert('Por favor selecciona una fecha válida para el recorrido.');
                 return;
             }
 
-            const healthCheck = document.getElementById(`healthR${id}`).checked;
-            if (!healthCheck) {
-                alert('Debes aceptar las condiciones de aptitud física y seguro médico para continuar.');
+            if (!healthChecked) {
+                alert('Debes aceptar los términos de la póliza de seguro de asistencia médica para proceder.');
                 return;
             }
 
-            const mod = document.getElementById(`modR${id}`).value;
-            const diet = document.getElementById(`dietR${id}`).value;
-            let pax = 0, total = 0;
-
-            if (mod === 'combo') {
-                pax = 4;
-                total = priceCombo;
-            } else {
-                pax = parseInt(document.getElementById(`adR${id}`).value) || 1;
-                total = pax * priceUnit;
-            }
+            const total = mod === 'combo' ? precioCombo : (pax * precioInd);
 
             currentBooking = {
                 user: activeUser,
-                routeName: routeName,
-                date: chosenDate,
+                routeName,
+                numRuta,
+                date,
                 modality: mod === 'combo' ? 'Combo Grupo Especial (4 Pax)' : 'Pasadía Individual',
-                pax: pax,
-                diet: diet,
-                total: total
+                pax,
+                diet,
+                total
             };
 
             document.getElementById('modalRouteSummary').innerHTML = `
                 <strong>${routeName}</strong><br>
-                📅 Fecha: ${chosenDate} | 🥗 Menú: ${diet}<br>
-                Total a Pagar: <span style="color:var(--naranja-aventura); font-weight:bold;">$${total.toLocaleString()} COP</span>
+                Fecha: ${date} | Mod: ${currentBooking.modality} (${pax} Pax)<br>
+                <span style="color: var(--naranja-aventura); font-size: 1.1rem; font-weight: bold;">Total a pagar: $${total.toLocaleString('es-CO')} COP</span>
             `;
 
             document.getElementById('paymentModal').style.display = 'flex';
         }
 
-        function selectPayTab(type) {
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function selectPayTab(tab) {
             document.querySelectorAll('.pay-tab').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.pay-form-panel').forEach(p => p.classList.remove('active'));
 
-            if (type === 'qr') {
-                document.querySelectorAll('.pay-tab')[0].classList.add('active');
+            if (tab === 'qr') {
+                event.target.classList.add('active');
                 document.getElementById('payFormQR').classList.add('active');
-            } else if (type === 'card') {
-                document.querySelectorAll('.pay-tab')[1].classList.add('active');
+            } else if (tab === 'card') {
+                event.target.classList.add('active');
                 document.getElementById('payFormCard').classList.add('active');
-            } else if (type === 'pse') {
-                document.querySelectorAll('.pay-tab')[2].classList.add('active');
+            } else if (tab === 'pse') {
+                event.target.classList.add('active');
                 document.getElementById('payFormPSE').classList.add('active');
             }
         }
 
-        function closePaymentModal() {
-            document.getElementById('paymentModal').style.display = 'none';
-        }
+        function processPayment() {
+            closeModal('paymentModal');
 
-        function closeTicketModal() {
-            document.getElementById('ticketModal').style.display = 'none';
-        }
+            const activeUser = JSON.parse(localStorage.getItem('ecoturs_session'));
+            const randomCode = '#ECO-' + Math.floor(1000 + Math.random() * 9000);
 
-        function confirmFinalPayment() {
-            closePaymentModal();
-
-            // Guardar reserva en el historial general para el administrador
+            // Guardar en la lista del administrador
             const allBookings = JSON.parse(localStorage.getItem('adminBookings')) || [];
             allBookings.push({
-                id: 'TK-' + Date.now().toString().slice(-6),
-                cliente: currentBooking.user.name,
-                email: currentBooking.user.email,
+                id: randomCode,
+                cliente: activeUser ? activeUser.name : 'Cliente Ecoturs',
+                email: activeUser ? activeUser.email : 'N/A',
                 ruta: currentBooking.routeName,
                 fecha: currentBooking.date,
                 modalidad: currentBooking.modality,
@@ -880,67 +908,22 @@
             });
             localStorage.setItem('adminBookings', JSON.stringify(allBookings));
 
-            // Rellenar modal con datos
-            document.getElementById('tkUser').textContent = currentBooking.user.name;
-            document.getElementById('tkEmail').textContent = currentBooking.user.email;
+            // Renderizar datos en el ticket
+            document.getElementById('tkCode').textContent = randomCode;
+            document.getElementById('tkUser').textContent = activeUser ? activeUser.name : 'Cliente Ecoturs';
+            document.getElementById('tkEmail').textContent = activeUser ? activeUser.email : 'N/A';
             document.getElementById('tkRoute').textContent = currentBooking.routeName;
             document.getElementById('tkDate').textContent = currentBooking.date;
             document.getElementById('tkMod').textContent = currentBooking.modality;
             document.getElementById('tkPax').textContent = `${currentBooking.pax} Persona(s)`;
             document.getElementById('tkDiet').textContent = currentBooking.diet;
-            document.getElementById('tkTotal').textContent = `$${currentBooking.total.toLocaleString()} COP`;
+            document.getElementById('tkTotal').textContent = `$${currentBooking.total.toLocaleString('es-CO')} COP`;
 
-            const qrData = encodeURIComponent(`EcotursTicket|User:${currentBooking.user.name}|Route:${currentBooking.routeName}|Date:${currentBooking.date}|Total:${currentBooking.total}`);
+            const qrData = encodeURIComponent(`EcotursTicket|User:${activeUser ? activeUser.name : 'Cliente'}|Route:${currentBooking.routeName}|Date:${currentBooking.date}|Total:${currentBooking.total}`);
             document.getElementById('tkQr').src = `https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=${qrData}`;
 
             document.getElementById('ticketModal').style.display = 'flex';
         }
-
-        registerForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('reg-name').value.trim();
-            const email = document.getElementById('reg-email').value.trim().toLowerCase();
-            const pass = document.getElementById('reg-pass').value;
-
-            const users = JSON.parse(localStorage.getItem('usersDB'));
-            if (users.some(u => u.email === email)) {
-                alert('Este correo ya está registrado.');
-                return;
-            }
-
-            const newUser = { name, email, pass };
-            users.push(newUser);
-            localStorage.setItem('usersDB', JSON.stringify(users));
-            localStorage.setItem('activeUser', JSON.stringify(newUser));
-
-            checkUserSession();
-            userRoutesSection.scrollIntoView({ behavior: 'smooth' });
-        });
-
-        loginForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('login-email').value.trim().toLowerCase();
-            const pass = document.getElementById('login-pass').value;
-
-            const users = JSON.parse(localStorage.getItem('usersDB'));
-            const user = users.find(u => u.email === email && u.pass === pass);
-
-            if (user) {
-                localStorage.setItem('activeUser', JSON.stringify(user));
-                loginForm.reset();
-                checkUserSession();
-                userRoutesSection.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                alert('Credenciales incorrectas.');
-            }
-        });
-
-        logoutBtn.addEventListener('click', function() {
-            localStorage.removeItem('activeUser');
-            checkUserSession();
-        });
-
-        checkUserSession();
     </script>
 </body>
 </html>
